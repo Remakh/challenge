@@ -1,5 +1,10 @@
 import re
 
+def contains_infix_expression(query: str):
+    query_without_brackets = re.sub(r'\(|\)', "", query)
+    query_without_brackets = query_without_brackets.replace("  ", " ")
+    return re.match(r'^\s*\d+( [+/\-*] \d+)*\s*$', query_without_brackets)
+
 def contains_date(query: str):
     if re.match(r'\d{4}-\d{2}-\d{2}', query):
         return True
